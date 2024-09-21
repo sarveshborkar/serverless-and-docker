@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Appenders>
+        <!-- Console Appender for general output -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <!-- File Appender for request logs -->
+        <File name="RequestFileAppender" fileName="./logs/request.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <!-- File Appender for response logs -->
+        <File name="ResponseFileAppender" fileName="./logs/response.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <!-- Logger for request logging -->
+        <Logger name="RequestLogger" level="INFO" additivity="false">
+            <AppenderRef ref="RequestFileAppender"/>
+        </Logger>
+
+        <!-- Logger for response logging -->
+        <Logger name="ResponseLogger" level="INFO" additivity="false">
+            <AppenderRef ref="ResponseFileAppender"/>
+        </Logger>
+
+        <!-- Root logger configuration -->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

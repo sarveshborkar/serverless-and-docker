@@ -1,0 +1,28 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-22.04-arm64"
+  config.vm.box_version = "202401.31.0"
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
+
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update
+    sudo apt-get install -y openjdk-17-jdk git maven
+    rm -rf /vagrant/md5-checksum-app
+
+    cd /vagrant/
+    git clone https://github.com/sarveshborkar/serverless-and-docker.git
+    cd md5-checksum-app
+    mvn test
+    mvn clean install -DskipTests
+    cp -rf ./target/md5-checksum-0.0.1-SNAPSHOT.jar /vagrant/app.jar
+
+
+    if [ -f /vagrant/app.jar ]; then
+      echo "Running JAR file..."
+      nohup java -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9010 -Dcom.sun.management.jmxremote.rmi.port=9010 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=localhost -jar /vagrant/app.jar > /vagrant/logs/app.log 2>&1 &
+    else
+      echo "JAR file not found. Please place the JAR file in /vagrant/"
+    fi
+  SHELL
+
+  config.vm.synced_folder ".", "/vagrant"
+end
