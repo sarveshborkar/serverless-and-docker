@@ -1,13 +1,13 @@
 # Containerize an Application using Docker
 
-This project is a Java-based web application that computes the MD5 checksum of a given string. The application is containerized using Docker for ease of deployment and scalability.
 The goal of this activity is to containerize this application using Docker and publish image to a registry.
+A Java-based web application that computes the MD5 checksum of a given string is used as an example for demonstration.
 
 ## Create Dockerfile for building and deploying the application 
 
 To setup a docker container, we need to prepare `Dockerfile` for the application to be deployed:
 
-1. Create Dockerfile to setup the environment and build the application if required.
+1. Create `Dockerfile` to setup the environment and build the application if required.
 <img width="1440" alt="Screenshot 2024-09-21 at 3 11 15 PM" src="https://github.com/user-attachments/assets/eb781b05-0740-4c8b-b55d-3adeaf54dd76">
 
 
@@ -47,7 +47,7 @@ docker run -d -p 8080:8080 md5-checksum-app
 
 ## Testing the application
 
-Now, we can test out application. In this particular case, we will try to make a sample api request using postman.
+Now, we can test out application. In this particular case, we will try to make a sample API request using Postman.
 <img width="1440" alt="Screenshot 2024-09-21 at 2 45 06 PM" src="https://github.com/user-attachments/assets/bc701377-6382-4d62-b884-568ee06e79b7">
 
 ## Publish Docker Image to Docker Hub
