@@ -1,4 +1,4 @@
-# Containerization an Application using Docker
+# Containerize an Application using Docker
 
 This project is a Java-based web application that computes the MD5 checksum of a given string. The application is containerized using Docker for ease of deployment and scalability.
 The goal of this activity is to containerize this application using Docker and publish image to a registry.
