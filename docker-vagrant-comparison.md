@@ -1,4 +1,4 @@
-# Measuring peformance of an application across Docker and Virtual Machine provisioned using Vagrant
+# Measuring performance of an application across Docker and Virtual Machine provisioned using Vagrant
 
 The aim of this activity is to benchmark and compare the performance of a Java-based web application across two distinct environments: a Docker container and a Virtual Machine provisioned using Vagrant.
 
@@ -215,6 +215,6 @@ Percentage of the requests served within a certain time (ms)
 
 ## Summary
 
-Docker container processed 9,176.05 requests per second while the VM handled 226.22 requests per second. Additionally, the startup time for the application in Docker was just 0.876 seconds, compared to 4.042 seconds for the VM, indicating a quicker deployment process. This significant difference suggests that the overhead associated with virtualization in the VM may be impacting its performance. In terms of median request time, Docker recorded 7 ms while the VM had a median of 122 ms. We can also observe that Docker instance has a higher memory consumption but we cannot consider it as drawback of Docker as the higher memory usage can be attributed to higher throughput as docker instance is processing requests at much higher rate.
+Docker container processed 9,176.05 requests per second while the VM handled 226.22 requests per second. Additionally, the startup time for the application in Docker was just 0.876 seconds, compared to 4.042 seconds for the VM, indicating a quicker deployment process. This significant difference suggests that the overhead associated with virtualization in the VM may be impacting its performance. In terms of median request time, Docker recorded 7 ms while the VM had a median of 122 ms. We can also observe that Docker instance has a higher memory consumption but we cannot consider it as drawback of Docker as the higher memory usage can be attributed to higher throughput processed by Docker instance.
 
 Overall, Docker's lighter approach to containerization, compared to the more resource-heavy virtualization in Vagrant, makes it a faster and more efficient way to manage applications. Docker also aligns better with current cloud-native trends, offering a more up-to-date and faster solution for modern deployment environments.
